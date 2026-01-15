@@ -13,6 +13,7 @@
 //! - **benefits**: HMO enrollment and claims processing
 //! - **compliance**: NDPR compliance and audit logging
 //! - **auth**: JWT authentication and RBAC
+//! - **sms**: SMS/USSD fallback channels for emerging markets
 //!
 //! ## Nigerian Compliance Features
 //!
@@ -22,6 +23,12 @@
 //! - NSITF and ITF contributions
 //! - NDPR Data Subject Requests
 //! - Nigerian public holidays
+//!
+//! ## West Africa Coverage
+//!
+//! - Ghana (SSNIT, Tier 1/2/3)
+//! - UEMOA Zone (CI, SN, ML, BF, NE, GW, BJ, TG)
+//! - Mobile Money: OPay, MTN MoMo, Orange Money, Wave
 
 // Core domain (from original)
 pub mod domain;
@@ -34,6 +41,7 @@ pub mod recruitment;
 pub mod benefits;
 pub mod compliance;
 pub mod auth;
+pub mod sms;
 
 // Re-exports from domain
 pub use domain::aggregates::{Employee, EmployeeError, PayrollRun, PayrollError};
@@ -42,7 +50,10 @@ pub use domain::events::{DomainEvent, EmployeeEvent, PayrollEvent};
 
 // Re-exports from new modules
 pub use payroll::{PayrollService, NigerianTaxCalculator, PensionCalculator};
+pub use payroll::{GhanaTaxCalculator, UemoaTaxCalculator, WestAfricaTaxRegistry, WestAfricaMobileMoneyRegistry};
 pub use leave::LeaveService;
 pub use performance::PerformanceService;
 pub use recruitment::{RecruitmentService, AiCvScorer};
 pub use auth::{Role, Permission, Claims, JwtService};
+pub use sms::{UssdRegistry, SmsTemplateRegistry};
+
