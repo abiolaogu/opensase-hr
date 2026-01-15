@@ -38,8 +38,10 @@ pub use middle_east::{
     IsraelTaxCalculator, MiddleEastRegistry
 };
 pub use western_europe::{
-    SwitzerlandTaxCalculator, AustriaTaxCalculator,
-    IrelandTaxCalculator, WesternEuropeRegistry
+    SwissTaxCalculator, AustrianTaxCalculator,
+    IrishTaxCalculator, LuxembourgTaxCalculator,
+    LiechtensteinTaxCalculator, WesternEuropeExtendedRegistry,
+    Kanton, Bundesland, LuxembourgTaxClass, IrishMaritalStatus,
 };
 
 
