@@ -1,7 +1,7 @@
 //! Payroll Module
 //!
-//! Multi-region payroll processing with tax engines for 80+ countries.
-//! Supports Africa, Americas, Middle East, Western & Southern Europe.
+//! Multi-region payroll processing with tax engines for 90+ countries.
+//! Supports Africa, Americas, Middle East, Europe (West, South, Central/East).
 
 pub mod models;
 pub mod service;
@@ -17,6 +17,7 @@ pub mod south_america;
 pub mod middle_east;
 pub mod western_europe;
 pub mod southern_europe;
+pub mod central_eastern_europe;
 
 pub use models::*;
 pub use service::PayrollService;
@@ -51,5 +52,13 @@ pub use southern_europe::{
     ComunidadAutonoma, ItalianRegione, MaltaTaxStatus,
     SouthernEuropeRegistry,
 };
+pub use central_eastern_europe::{
+    PolishTaxCalculator, CzechTaxCalculator,
+    HungarianTaxCalculator, RomanianTaxCalculator,
+    EstonianTaxCalculator, LatvianTaxCalculator,
+    LithuanianTaxCalculator, BulgarianTaxCalculator,
+    RomanianSector, CentralEasternEuropeRegistry,
+};
+
 
 
