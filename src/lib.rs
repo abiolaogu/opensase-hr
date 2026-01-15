@@ -43,6 +43,7 @@ pub mod compliance;
 pub mod auth;
 pub mod sms;
 pub mod ops;
+pub mod controller;
 
 // Re-exports from domain
 pub use domain::aggregates::{Employee, EmployeeError, PayrollRun, PayrollError};
