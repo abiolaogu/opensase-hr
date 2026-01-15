@@ -1,7 +1,7 @@
 //! Payroll Module
 //!
-//! Multi-region payroll processing with tax engines for 60+ countries.
-//! Supports Africa, South America, and Middle East with local compliance.
+//! Multi-region payroll processing with tax engines for 70+ countries.
+//! Supports Africa, South America, Middle East, and Western Europe.
 
 pub mod models;
 pub mod service;
@@ -15,6 +15,7 @@ pub mod south_africa;
 pub mod africa_mobile_gateway;
 pub mod south_america;
 pub mod middle_east;
+pub mod western_europe;
 
 pub use models::*;
 pub use service::PayrollService;
@@ -36,6 +37,11 @@ pub use middle_east::{
     UAETaxCalculator, SaudiTaxCalculator, 
     IsraelTaxCalculator, MiddleEastRegistry
 };
+pub use western_europe::{
+    SwitzerlandTaxCalculator, AustriaTaxCalculator,
+    IrelandTaxCalculator, WesternEuropeRegistry
+};
+
 
 
 
