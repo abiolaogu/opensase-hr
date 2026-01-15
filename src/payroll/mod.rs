@@ -1,7 +1,7 @@
 //! Payroll Module
 //!
-//! Nigerian payroll processing with PAYE tax, PenCom pension, and NHF deductions.
-//! Extended with West Africa and Southern Africa tax calculators and mobile money.
+//! Multi-region payroll processing with tax engines for Africa and South America.
+//! Supports 40+ countries with local compliance.
 
 pub mod models;
 pub mod service;
@@ -12,6 +12,8 @@ pub mod west_africa;
 pub mod west_africa_enhanced;
 pub mod mobile_money;
 pub mod south_africa;
+pub mod africa_mobile_gateway;
+pub mod south_america;
 
 pub use models::*;
 pub use service::PayrollService;
@@ -24,6 +26,12 @@ pub use south_africa::{
     SouthAfricaTaxCalculator, ZimbabweTaxCalculator, 
     ZambiaTaxCalculator, AngolaTaxCalculator, SouthernAfricaRegistry
 };
+pub use africa_mobile_gateway::{ProviderRouter, AfricaMobileMoneyRegistry};
+pub use south_america::{
+    BrazilTaxCalculator, ArgentinaTaxCalculator,
+    ColombiaTaxCalculator, PeruTaxCalculator, SouthAmericaRegistry
+};
+
 
 
 
