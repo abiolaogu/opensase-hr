@@ -1,19 +1,60 @@
 [package]
 name = "sase-hr"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["OpenSASE Team"]
-description = "Self-hosted HR & Payroll platform - BambooHR/Gusto replacement"
+description = "Self-hosted HR & Payroll platform with Nigerian compliance - BambooHR/Gusto replacement"
 license = "Apache-2.0"
+repository = "https://github.com/abiolaogu/opensase-hr"
 
 [dependencies]
+# Async runtime
 tokio = { version = "1.35", features = ["full"] }
 async-trait = "0.1"
+
+# Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+
+# Date/Time
 chrono = { version = "0.4", features = ["serde"] }
+
+# UUID
 uuid = { version = "1", features = ["v4", "serde"] }
+
+# Error handling
 thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
 tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Concurrent data structures
 dashmap = "5.5"
+
+# Decimal arithmetic (for money)
 rust_decimal = { version = "1.36", features = ["serde"] }
+rust_decimal_macros = "1.36"
+
+# Web framework
+axum = { version = "0.7", features = ["macros"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+
+# Validation
+validator = { version = "0.16", features = ["derive"] }
+
+# HTTP client (for AI integrations)
+reqwest = { version = "0.11", features = ["json"] }
+
+[dev-dependencies]
+tokio-test = "0.4"
+
+[features]
+default = []
+full = []
+
+[[bin]]
+name = "hr-api"
+path = "src/main.rs"
