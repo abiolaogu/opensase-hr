@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  hr:
+    build: .
+    ports:
+      - "8082:8082"
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/hr
+      - NATS_URL=nats://nats:4222
+      - RUST_LOG=debug
+      - PORT=8082
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - hr-network
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=hr
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - hr-network
+
+  nats:
+    image: nats:2.10-alpine
+    command: ["--js"]
+    networks:
+      - hr-network
+
+volumes:
+  postgres_data:
+
+networks:
+  hr-network:
+    driver: bridge

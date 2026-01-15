@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS departments (id UUID PRIMARY KEY, name VARCHAR(255) NOT NULL, description TEXT, manager_id UUID, parent_id UUID, created_at TIMESTAMPTZ DEFAULT NOW());
+CREATE TABLE IF NOT EXISTS employees (id UUID PRIMARY KEY, employee_number VARCHAR(50) UNIQUE NOT NULL, email VARCHAR(255) NOT NULL, first_name VARCHAR(100) NOT NULL, last_name VARCHAR(100) NOT NULL, department_id UUID REFERENCES departments(id), manager_id UUID, job_title VARCHAR(100), employment_type VARCHAR(50) DEFAULT 'full_time', hire_date DATE NOT NULL, status VARCHAR(50) DEFAULT 'active', phone VARCHAR(50), address JSONB, emergency_contact JSONB, created_at TIMESTAMPTZ DEFAULT NOW(), updated_at TIMESTAMPTZ DEFAULT NOW());
+CREATE TABLE IF NOT EXISTS leave_requests (id UUID PRIMARY KEY, employee_id UUID NOT NULL REFERENCES employees(id), leave_type VARCHAR(50) NOT NULL, start_date DATE NOT NULL, end_date DATE NOT NULL, days INTEGER NOT NULL, reason TEXT, status VARCHAR(50) DEFAULT 'pending', approved_by UUID, created_at TIMESTAMPTZ DEFAULT NOW());
+CREATE INDEX idx_employees_dept ON employees(department_id);
+CREATE INDEX idx_leave_employee ON leave_requests(employee_id);
