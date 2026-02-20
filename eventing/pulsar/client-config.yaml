@@ -1,0 +1,11 @@
+pulsar:
+  broker_url: pulsar://pulsar-broker.pulsar.svc.cluster.local:6650
+  http_url: http://pulsar-broker.pulsar.svc.cluster.local:8080
+  tenant: billyronks
+  namespace: extract-hr
+  producers:
+    - topic: persistent://billyronks/extract-hr/command
+    - topic: persistent://billyronks/extract-hr/event
+  consumers:
+    - topic: persistent://billyronks/extract-hr/audit
+      subscription: extract-hr-svc-sub

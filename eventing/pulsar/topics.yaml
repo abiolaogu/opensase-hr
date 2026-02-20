@@ -1,0 +1,11 @@
+tenant: billyronks
+namespace: extract-hr
+topics:
+  - name: persistent://billyronks/extract-hr/command
+    partitions: 6
+  - name: persistent://billyronks/extract-hr/event
+    partitions: 6
+  - name: persistent://billyronks/extract-hr/audit
+    partitions: 6
+  - name: persistent://billyronks/global/observability
+    partitions: 6
